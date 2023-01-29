@@ -11,21 +11,21 @@
 
 \begin{document}
 \pagenumbering{gobble}
-\section*{Pythagorean Theorem Proof}
+\section*{Law of Sines Proof}
 \subsection*{By: Noah Chappell}
 
 \subsection*{\underline{Theorem}:}
-Given a right triangle with a hypotenuse of side length C and non-hypotenuse side lengths of A and B, $A^2+B^2=C^2$.
-We can also represent the angle between sides A and C as {$\alpha$} and the angle between sides B and C as {$\beta$}.
+Given any triangle with side lengths A, B, and C, with angles $\alpha$ between sides B and C, $\beta$ between sides A and C, and $\gamma$ between sides A and B, the relationship $\frac{sin(\alpha)}{A} = \frac{sin(\beta)}{B} = \frac{sin(\gamma)}{C}$ always holds.
 
 \begin{center}
     \begin{tikzpicture}
         \draw (0,0) coordinate (a) 
-        -- node[below]{A}(4,0) coordinate (b) 
-        -- node[right]{B}(4,2)  coordinate (c) 
-        -- node[above]{C}(a)
+        -- node[pos=0.5, below]{B}(5,0) coordinate (b) 
+        -- node[pos=0.45, above=0.1cm]{A}(2,2)  coordinate (c) 
+        -- node[pos=0.6, above=0.1cm]{C}(a)
         pic["$\alpha$", angle radius=1cm]{angle=b--a--c}
-        pic["$\beta$", angle radius=0.75cm]{angle=a--c--b};
+        pic["$\beta$", angle radius=0.75cm]{angle=a--c--b}
+        pic["$\gamma$", angle radius=1.5cm]{angle=c--b--a};
     \end{tikzpicture}
 \end{center}
 
