@@ -31,45 +31,36 @@ Given any triangle with side lengths A, B, and C, with angles $\alpha$ between s
 
 \subsection*{\underline{Proof}:}
 
-Suppose we create two identical right triangles and position the two triangles in a way so that their 
-A side and B side create one line, the resulting angle between {$\alpha$} and {$\beta$} being 90°. Then 
-connect the triangles with a line from their unconnected {$\alpha$} and {$\beta$} corners\\
+Imagine we draw a line from the $\beta$ corner down to the B side length to make a right triangle and label the new line $X$.\\
 \begin{center}
     \begin{tikzpicture}
-        %triangle1
-        \draw (0,0) coordinate (a1) 
-        -- node[below]{A}(4,0) coordinate (b1) 
-        -- node[right]{B}(4,2)  coordinate (c1) 
-        -- node[above]{C}(a1)
-        pic["$\alpha$", angle radius=1cm]{angle=b1--a1--c1}
-        pic["$\beta$", angle radius=0.75cm]{angle=a1--c1--b1};
-
-        %triangle2
-        \draw (4,2) coordinate (a2) 
-        -- node[right]{A}(4,6) coordinate (b2) 
-        -- node[above]{B}(2,6)  coordinate (c2) 
-        -- node[left]{C}(a2)
-        pic["$\alpha$", angle radius=1cm]{angle=b2--a2--c2}
-        pic["$\beta$", angle radius=0.75cm]{angle=a2--c2--b2};
-
-        %connecting line
-        \draw[dotted] (a1) -- (c2);
+        \draw (0,0) coordinate (a) 
+        -- node[pos=0.5, below]{B}(5,0) coordinate (b) 
+        -- node[pos=0.45, above=0.1cm]{A}(2,2)  coordinate (c) 
+        -- node[pos=0.6, above=0.1cm]{C}(a)
+        pic["$\alpha$", angle radius=1cm]{angle=b--a--c}
+        pic["$\beta$", angle radius=0.75cm]{angle=a--c--b}
+        pic["$\gamma$", angle radius=1.5cm]{angle=c--b--a};
+        \draw[dotted] (c) -- node[pos=0.7, right]{X}(2,0);
     \end{tikzpicture}
 \end{center}
-We can create two equations to represent the area of this new shape:\\
-The first equation sees the shape as 3 triangles while the second equation sees the shape as a trapezoid\\
+Since we have created two right triangles that share a length $X$ we can sove for $X$ with two different equations:
 \begin{center}
-    $Area=2\frac{1}{2}AB+\frac{1}{2}C^2$ and $Area=\frac{1}{2}(A+B)(A+B)$
+    $sin(\alpha)=\frac{X}{C}$ and $sin(\gamma)=\frac{X}{A}$\\
+    $C*sin(\alpha)=X$ and $A*sin(\gamma)=X$\\
+    $C*sin(\alpha)=X$ and $A*sin(\gamma)=X$\\
 \end{center}
-If we set the equations equal to each other and simplify:\\
+If we set the equations equal to each other we can gain most of the relationship:
 \begin{center}
-    $2\frac{1}{2}AB+\frac{1}{2}C^2=\frac{1}{2}(A+B)(A+B)$\\
-    $AB+\frac{1}{2}C^2=\frac{1}{2}(A^2+2AB+B^2)$\\
-    $AB+\frac{1}{2}C^2=\frac{1}{2}A^2+AB+\frac{1}{2}B^2$\\
-    $\frac{1}{2}C^2=\frac{1}{2}A^2+\frac{1}{2}B^2$\\
-    $C^2=A^2+B^2$\\
+    $C*sin(\alpha) = A*sin(\gamma)$\\
+    $C*\frac{sin(\alpha)}{A} = sin(\gamma)$\\
+    $\frac{sin(\alpha)}{A} = \frac{sin(\gamma)}{C}$\\
 \end{center}
-Therefore given a right triangle with a hypotenuse of side length C and non-hypotenuse side lengths of A and B, $A^2+B^2=C^2$.\\
+In these steps we have draw a vertical line stemming from one corner of the triangle to make two right triangles incorporating the other two corners. Doing this we have shown that the $sine$ of the angle each corner produces over the side length opposite to each corner is equal.\\
+\\
+With this proven we can assert that not only does $\frac{sin(\alpha)}{A} = \frac{sin(\gamma)}{C}$, but $\frac{sin(\alpha)}{A} = \frac{sin(\beta)}{B}$ which we could prove with a line stemming from the $\gamma$ corner to side length C.\\
+\\
+Therefore, by transitive property, if $\frac{sin(\alpha)}{A} = \frac{sin(\gamma)}{C}$ and $\frac{sin(\alpha)}{A} = \frac{sin(\beta)}{B}$, then $\frac{sin(\alpha)}{A} = \frac{sin(\beta)}{B} = \frac{sin(\gamma)}{C}$.\\
 \begin{flushright}
     \begin{tikzpicture}
         \filldraw[fill=black](0,0) rectangle (0.3,0.3);
